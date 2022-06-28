@@ -3,32 +3,55 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
 import java.awt.Container;
+import java.util.Random;
 import java.awt.BorderLayout;
+
+class Card{
+
+  private ImageIcon icon;
+  private JLabel label;
+
+  Card(Integer argc){
+    icon = new ImageIcon(argc + ".png");
+    label = new JLabel(icon);
+  }
+
+  public JLabel labelreturn(){
+    return(label);
+  }
+}
+
+class GameFrame extends JFrame{
+
+  JPanel panel = new JPanel();
+
+  public GameFrame(String title){
+    setTitle(title);
+    setBounds(100, 100, 600, 600);
+    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+  }
+
+  public void GameCleate(){
+
+    Card card1 = new Card(1);
+    Card card2 = new Card(2);
+    Card card3 = new Card(3);
+
+    panel.add(card1.labelreturn());
+    panel.add(card2.labelreturn());
+    panel.add(card3.labelreturn());
+    
+    Container contentPane = getContentPane();
+    contentPane.add(panel, BorderLayout.CENTER);
+  } 
+}
 
 class JavaKadai extends JFrame{
   public static void main(String args[]){
-    JavaKadai frame = new JavaKadai("MyTitle");
+    GameFrame frame = new GameFrame("神経衰弱ゲーム");
+    
+    frame.GameCleate();
+
     frame.setVisible(true);
-  }
-
-  JavaKadai(String title){
-    setTitle(title);
-    setBounds(100, 100, 600, 400);
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-    ImageIcon icon1 = new ImageIcon("1.png");
-    ImageIcon icon2 = new ImageIcon("1.png");
-
-    JLabel label1 = new JLabel(icon1);
-
-    JLabel label2 = new JLabel();
-    label2.setIcon(icon2);
-
-    JPanel p = new JPanel();
-    p.add(label1);
-    p.add(label2);
-
-    Container contentPane = getContentPane();
-    contentPane.add(p, BorderLayout.CENTER);
   }
 }
