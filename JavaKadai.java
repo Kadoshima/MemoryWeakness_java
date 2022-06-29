@@ -5,6 +5,7 @@ import javax.swing.ImageIcon;
 import java.awt.Container;
 import java.util.Random;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 
 class Card{
 
@@ -14,6 +15,7 @@ class Card{
   Card(Integer argc){
     icon = new ImageIcon(argc + ".png");
     label = new JLabel(icon);
+    label.setPreferredSize(new Dimension(200, 100));
   }
 
   public JLabel labelreturn(){
